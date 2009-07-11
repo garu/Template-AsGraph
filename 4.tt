@@ -1,0 +1,5 @@
+This is 4.tt
+
+[% INCLUDE 5.tt %]
+
+[% PROCESS 3.tt %]
