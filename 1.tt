@@ -1,8 +1,0 @@
-this is 1.tt
-
-[% PROCESS 2.tt %]
-
-[%
- INCLUDE 4.tt
- var = value
-%]
