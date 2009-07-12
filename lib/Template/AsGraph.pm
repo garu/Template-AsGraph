@@ -5,20 +5,34 @@ use strict;
 use Graph::Easy;
 use Template;
 use Carp 'croak';
+use File::Spec;
 
 our $VERSION = '0.01';
 
 
 sub graph {
+	# get parameters
 	my $self     = shift;
 	my $filename = shift or croak "you must specify a template name";
 	my $config   = (@_ ? shift : {});
 	my $vars     = (@_ ? shift : {});
 	
+	unless (exists $config->{OUTPUT}) {
+		$config->{OUTPUT} ||= File::Spec->devnull;
+	}
+
+	# setup our own context object. This can be 
+	# overridable by user's $config, assuming 
+	# they know what they're doing
 	$Template::Config::CONTEXT = 'Template::AsGraph::Context';
+
+	# process the given template, to populate
+	# context's tree structure
 	my $template = Template->new($config);
 	$template->process($filename, $vars)
 		|| croak $template->error;
+
+	# grab our shiny tree and make it a graph!
 	my $tree = $template->context->tree;	
 
 	my $graph = Graph::Easy->new();
@@ -29,6 +43,9 @@ sub graph {
 	return $graph;
 }
 
+
+# this internal method recursively fills 
+# our graph with appropriate node values
 sub _new_node {
 	my ($graph, $name, $tree) = (@_);
 	
@@ -93,6 +110,10 @@ The returnerd $graph is a Graph::Easy object, so you can manipulate it at will. 
 =head1 DESCRIPTION
 
 
+=head2 graph()
+
+This 
+
 =head1 AUTHOR
 
 Breno G. de Oliveira, C<< <garu at cpan.org> >>
@@ -103,12 +124,12 @@ Although this module should work without any quirks and DWIM for almost everyone
 
 =over 4
 
-=item * In order to correctly fetch the processing tree, we wrap TT's Context module on our own. So you won't be able to setup a custom Context object to use with this module. If your version also wraps the original TT Context (and you should), you can easily fix this by inheriting from Template::AsGraph::Context instead of from Template::Context, and just setting it up in the config hash:
+=item * In order to correctly find the processing tree, we wrap TT's Context module on our own. So you won't be able to setup a custom Context object to use with this module. If your version also wraps the original TT Context (and you should), you can easily fix this by inheriting from Template::AsGraph::Context instead of from Template::Context, and just setting it up in the config hash:
 
    CONTEXT => My::Custom::Context->new(),
 
 
-=item * If, by any chance, you also want to fetch the output 
+=item * If, by any chance, you also want to fetch the output of the processed template(s), you'll need to setup the OUTPUT (and, optionally, OUTPUT_PATH). Please refer to L<Template::Manual::Config> for more information on how to get the best out of it.
 
 =head1 BUGS
 

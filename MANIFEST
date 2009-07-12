@@ -3,6 +3,7 @@ Changes
 MANIFEST
 README
 lib/Template/AsGraph.pm
+lib/Template/AsGraph/Context.pm
 t/00-load.t
 t/pod-coverage.t
 t/pod.t
