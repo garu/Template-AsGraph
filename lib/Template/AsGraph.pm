@@ -110,9 +110,14 @@ The returnerd $graph is a Graph::Easy object, so you can manipulate it at will. 
 =head1 DESCRIPTION
 
 
-=head2 graph()
+=head2 graph($template_name)
 
-This 
+=head2 graph($template_name, \%tt_config)
+
+=head2 graph($template_name, \%tt_config, \%tt_vars)
+
+Receives a template name and generates a L<Graph::Easy> object with a representation of the template's flow. It may optionally receive any L<Template> configuration option and variables.
+
 
 =head1 AUTHOR
 
@@ -130,6 +135,9 @@ Although this module should work without any quirks and DWIM for almost everyone
 
 
 =item * If, by any chance, you also want to fetch the output of the processed template(s), you'll need to setup the OUTPUT (and, optionally, OUTPUT_PATH). Please refer to L<Template::Manual::Config> for more information on how to get the best out of it.
+
+=back
+
 
 =head1 BUGS
 
@@ -172,7 +180,7 @@ L<http://search.cpan.org/dist/Template-AsGraph/>
 
 =head1 ACKNOWLEDGEMENTS
 
-Andy Wardley and his awesome Template Toolkit deserve all the praise. Also, many thanks to Pedro Melo and his MojoX::Routes::AsGraph, which served as inspiration for this module from the main idea down to the actual code.
+Andy Wardley and his awesome Template Toolkit deserve all the praise. Also, many thanks to Pedro Melo and his L<MojoX::Routes::AsGraph>, which served as inspiration for this module from the main idea down to the actual code.
 
 =head1 COPYRIGHT & LICENSE
 
