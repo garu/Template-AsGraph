@@ -172,6 +172,7 @@ L<http://search.cpan.org/dist/Template-AsGraph/>
 
 =head1 ACKNOWLEDGEMENTS
 
+Andy Wardley and his awesome Template Toolkit deserve all the praise. Also, many thanks to Pedro Melo and his MojoX::Routes::AsGraph, which served as inspiration for this module from the main idea down to the actual code.
 
 =head1 COPYRIGHT & LICENSE
 
