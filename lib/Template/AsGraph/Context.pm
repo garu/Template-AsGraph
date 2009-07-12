@@ -1,3 +1,22 @@
+#============================================================= -*-Perl-*-
+#
+# Template::AsGraph::Context
+#
+# DESCRIPTION
+#   Wrapper module for original Template::Context, populating a tree
+#   structure for each processed template.
+#
+# AUTHOR
+#   Breno G. de Oliveira   <garu@cpan.org>
+#
+# COPYRIGHT
+#   Copyright (C) 2009 Breno G. de Oliveira.  All Rights Reserved.
+#
+#   This module is free software; you can redistribute it and/or
+#   modify it under the same terms as Perl itself.
+# 
+#============================================================================
+
 package Template::AsGraph::Context;
 # maybe this should be refactored into a separate
 # module such as TemplateX::Context::Routes
