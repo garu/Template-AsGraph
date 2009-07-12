@@ -8,7 +8,11 @@ my $builder = Module::Build->new(
     dist_author         => 'Breno G. de Oliveira <garu@cpan.org>',
     dist_version_from   => 'lib/Template/AsGraph.pm',
     build_requires => {
-        'Test::More' => 0,
+        'Test::More'  => 0,
+		'Template'    => 2,
+		'File::Spec'  => 0,
+		'Carp'        => 0,
+		'Graph::Easy' => 0,
     },
     add_to_cleanup      => [ 'Template-AsGraph-*' ],
     create_makefile_pl => 'traditional',
