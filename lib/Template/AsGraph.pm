@@ -7,7 +7,7 @@ use Template;
 use Carp 'croak';
 use File::Spec;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 sub graph {
